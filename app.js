@@ -1,5 +1,15 @@
 'use strict';
 
+// ── Google Cloud Console setup ────────────────────────────────────────────────
+// Add the following to your OAuth 2.0 client's "Authorized JavaScript origins":
+//   https://sorendahlc-eng.github.io
+//
+// Also add this to "Authorized redirect URIs" (required for GIS token flow):
+//   https://sorendahlc-eng.github.io
+//
+// Console: https://console.cloud.google.com/apis/credentials
+// ─────────────────────────────────────────────────────────────────────────────
+
 const CLIENT_ID = '620868311036-2beqbbfmh98e5sh1qelnloc7enio1e3q.apps.googleusercontent.com';
 const SCOPES = [
   'https://www.googleapis.com/auth/calendar.readonly',
