@@ -446,6 +446,119 @@
       position: absolute; top: 14px; left: 222px;
       z-index: 10;
     }
+
+    /* ══════════════════════════════════════════════════════════════════
+       RESPONSIVE — phone portrait (< 768px)
+       Stacks the three panels vertically and lets the page scroll.
+    ══════════════════════════════════════════════════════════════════ */
+    @media (max-width: 767px) {
+
+      /* Let the whole page scroll */
+      html, body {
+        height: auto;
+        min-height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      /* Dashboard: vertical stack, part of document flow */
+      #dashboard {
+        position: relative;
+        flex-direction: column;
+        height: auto;
+        min-height: 100svh; /* fallback to 100vh in older browsers */
+        overflow: visible;
+      }
+
+      /* ── Upcoming panel: compact strip at top ── */
+      #upcoming-panel {
+        width: 100%;
+        max-height: 240px;
+        border-bottom: 1px solid var(--divider);
+        flex-shrink: 0;
+      }
+
+      /* Shrink the large clock to fit on a phone header */
+      #clock-time {
+        font-size: 34px;
+        letter-spacing: 1px;
+      }
+
+      .clock-area {
+        padding: 10px 8px 8px 14px;
+      }
+
+      /* Events list: capped so the panel doesn't eat the whole screen */
+      .events-list {
+        max-height: 165px;
+      }
+
+      /* ── Month panel: natural (auto) height, full width ── */
+      #month-panel {
+        width: 100%;
+        flex: none;
+        height: auto;
+        overflow: visible;
+        padding: 12px 10px;
+      }
+
+      #month-title { font-size: 18px; }
+
+      /* Grid rows: fixed height instead of flex:1 (which needs a fixed parent) */
+      .month-grid {
+        flex: none;
+        overflow: visible;
+      }
+      .month-row {
+        flex: none;
+        height: 52px;
+      }
+
+      /* Slightly smaller text and dots to fit 7 columns on a narrow screen */
+      .day-num  { font-size: 12px; }
+      .day-cell { padding-top: 3px; margin: 1px; }
+      .event-dot { width: 5px; height: 5px; }
+      .event-overflow { font-size: 8px; }
+
+      .calendar-legend { gap: 8px 12px; margin-top: 6px; }
+      .legend-label { font-size: 11px; }
+
+      /* ── Tasks panel: natural height, full width, page scrolls ── */
+      #tasks-panel {
+        width: 100%;
+        flex: none;
+        height: auto;
+        overflow: visible;
+      }
+
+      /* Tasks list expands to show all tasks; no internal scroll needed */
+      .tasks-list {
+        flex: none;
+        height: auto;
+        overflow: visible;
+        /* bottom padding so last task clears iPhone home bar */
+        padding-bottom: max(16px, env(safe-area-inset-bottom));
+      }
+
+      .tasks-empty {
+        height: auto;
+        padding: 24px 16px;
+      }
+
+      /* Refresh indicator: pin to top-right so it's always visible */
+      #refresh-indicator {
+        position: fixed;
+        top: 12px;
+        right: 12px;
+        left: auto;
+      }
+
+      /* Modals: fill full width on narrow screens */
+      .modal-sheet {
+        max-width: 100%;
+        padding-bottom: max(24px, env(safe-area-inset-bottom));
+      }
+    }
   </style>
 </head>
 <body>
