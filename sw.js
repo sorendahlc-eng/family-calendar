@@ -2,7 +2,7 @@
 // Caches app shell (HTML/JS/CSS/fonts) so it loads offline after first visit.
 // Google API calls are always network-first (live data only).
 
-const CACHE_NAME = 'family-calendar-v1';
+const CACHE_NAME = 'family-calendar-v2';
 
 const APP_SHELL = [
   './',
